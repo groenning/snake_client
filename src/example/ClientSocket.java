@@ -14,7 +14,7 @@ public class ClientSocket {
     Socket socketClient;
 
     //Skriv en kommentar (konstruktør)
-    public ClientSocket (String hostname, int port){
+    public ClientSocket(String hostname, int port) {
         this.hostname = hostname;
         this.port = port;
 
@@ -22,24 +22,24 @@ public class ClientSocket {
 
     // UnknownHostException gør at hvis den ikke finder nogen host adresse bryder programmet ikke ned
 
-    public void connection() throws UnknownHostException, IOException{
+    public void connection() throws UnknownHostException, IOException {
 
         System.out.println("Try to connect to " + hostname + port);
 
-        System.out.println("Attempting to connect to "+hostname+":"+port);
+        System.out.println("Attempting to connect to " + hostname + ":" + port);
 
-        SocketClient = new Socket(hostname,port);
+        socketClient = new Socket(hostname, port);
 
         System.out.println("Connection is established");
     }
 
 
-
     public static void main(String[] args) {
 
         //This line create a socketclient object
-        SocketClient client = new SocketClient ("Localhost",12312);
-
+        WebServer client = new WebServer();
+        client.start();
 
 
     }
+}
