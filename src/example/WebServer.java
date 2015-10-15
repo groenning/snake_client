@@ -83,11 +83,12 @@ public class WebServer {
 
     @POST
     @Path("/login/")
-    @Produces("text/plain")
-    public String login(String data)  {
+    @Produces("application/json")
+    public Response login(String data)  {
 
         System.out.println(data);
-        return "OK" ;
+
+        return Response.status(200).entity("{\"succes\":\"true\"}").build();
     }
 
     @POST
@@ -122,11 +123,12 @@ public class WebServer {
     }
     @POST
     @Path("/create")
-    @Produces("text/plain")
-    public String createGame(String data)  {
+    @Produces("application/json")
+    public Response createGame(String data)  {
 
         System.out.println(data);
-        return "OK" ;
+
+        return Response.status(201).entity("{\"succes\":\"true\"}").build();
     }
 
     @POST
