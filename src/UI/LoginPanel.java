@@ -60,7 +60,7 @@ public class LoginPanel extends JFrame {
         add(lblNewLabel);
 
         errorMessage = new JLabel();
-        errorMessage.setForeground(new Color(255, 92, 223));
+        errorMessage.setForeground(new Color(190, 255, 60));
         errorMessage.setFont(new Font("Lucida Grande", Font.ITALIC, 14));
         errorMessage.setBounds(215, 304, 298, 22);
         add(errorMessage);
