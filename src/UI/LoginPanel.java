@@ -2,7 +2,8 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.ActionListener;
+import java.awt.Color;
 
 /**
  * Created by Tobias on 15/10/15.
@@ -19,16 +20,15 @@ public class LoginPanel extends JFrame {
     private JComponent lblNewLabelUserName;
     private JLabel TestLabel;
 
-    public LoginPanel()
-    {
+    public LoginPanel() {
         setLayout(null);
         setSize(MyFrame.SIZE);
         setBackground(Theme.BACKGROUNDCOLOR);
 
-        cbsBitcoinLabel = new JLabel();
-        cbsBitcoinLabel.setIcon(new ImageIcon(Resource.class.getResource("/CBS Bitcoin Logo Big.png")));
-        cbsBitcoinLabel.setBounds(189, 116, 298, 50);
-        add(cbsBitcoinLabel);
+        TestLabel = new JLabel();
+        // TestLabel.setIcon(new ImageIcon(Resource.class.getResource("/CBS Bitcoin Logo Big.png")));
+        TestLabel.setBounds(189, 116, 298, 50);
+        add(TestLabel);
 
         lblNewLabelUserName = new JLabel("Username:");
         lblNewLabelUserName.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -48,27 +48,27 @@ public class LoginPanel extends JFrame {
         textFieldPassword.setBounds(316, 261, 179, 34);
         add(textFieldPassword);
 
-        btnLogin = new JButton("Login");
-        btnLogin.setFont(new Font("Lucida Grande", Font.BOLD, 16));
-        btnLogin.setActionCommand("DoLogin");
-        btnLogin.setBounds(215, 338, 262, 41);
-        add(btnLogin);
+        TestLogin = new JButton("Login");
+        TestLogin.setFont(new Font("Lucida Grande", Font.BOLD, 16));
+        TestLogin.setActionCommand("DoLogin");
+        TestLogin.setBounds(215, 338, 262, 41);
+        add(TestLogin);
 
         lblNewLabel = new JLabel();
-        lblNewLabel.setIcon(new ImageIcon(Resource.class.getResource("/CBS small.png")));
+        //lblNewLabel.setIcon(new ImageIcon(Resource.class.getResource("/CBS small.png")));
         lblNewLabel.setBounds(497, 465, 179, 50);
         add(lblNewLabel);
 
         errorMessage = new JLabel();
-        errorMessage.setForeground(new Color(255, 0, 0));
+        errorMessage.setForeground(new Color(255, 92, 223));
         errorMessage.setFont(new Font("Lucida Grande", Font.ITALIC, 14));
         errorMessage.setBounds(215, 304, 298, 22);
         add(errorMessage);
 
-        btnForgotPass = new JButton("Forgot password?");
-        btnForgotPass.setBounds(211, 391, 270, 28);
-        btnForgotPass.setActionCommand("OpenForgotCheckUser");
-        add(btnForgotPass);
+        TestForgotPass = new JButton("Forgot password?");
+        TestForgotPass.setBounds(211, 391, 270, 28);
+        TestForgotPass.setActionCommand("OpenForgotCheckUser");
+        add(TestForgotPass);
     }
 
     public String getTextFieldUserName()
@@ -99,8 +99,8 @@ public class LoginPanel extends JFrame {
 
     public void addActionListener(ActionListener ac)
     {
-        btnLogin.addActionListener(ac);
-        btnForgotPass.addActionListener(ac);
+        TestLogin.addActionListener(ac);
+        TestForgotPass.addActionListener(ac);
     }
 }
 }
