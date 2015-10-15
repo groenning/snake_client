@@ -1,76 +1,215 @@
 package example;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import com.sun.net.httpserver.HttpServer;
+import com.sun.jersey.api.container.httpserver.HttpServerFactory;
+import com.google.gson.Gson;
 
+import java.io.IOException;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
+
+/**
+ * Created by jesperbruun on 12/10/15.
+ */
+// The Java class will be hosted at the URI path "/helloworld"
+@Path("/api")
 public class WebServer {
-
-    public void start() {
-
-        ServerSocket s;
-        int portNr = 11011;
-
-        System.out.println("WebServer is running on port " + portNr);
-        System.out.println("(press ctrl-c to exit)");
-        try {
-            s = new ServerSocket(portNr);
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-            return;
-        }
-
-        System.out.println("Waiting for incoming request ...");
-        while(true) {
-            try {
-
-                // hang execution, and wait for incoming request
-                Socket remote = s.accept();
-
-                // remote client has now establish connection to the server, yay!
-                System.out.println("================================");
-                System.out.println("Connection!");
-                System.out.println("================================");
-                BufferedReader in = new BufferedReader(new InputStreamReader(remote.getInputStream()));
-                PrintWriter out = new PrintWriter(remote.getOutputStream());
-
-                /*
-                *  Lets read some data from the client header
-                */
-                String str = ".";
-                while (!str.equals("")) {
-                    str = in.readLine();
-                    System.out.println(str);
-                }
-
-                /*
-                *  Hmm, maybe this is a good spot for returning some content to
-                *  the client now?
-                *  Maybe via the "out" PrintWrite object ... but i dont know.
-                */
-                out.println("HTTP/1.0 200 OK");
-                out.println("Content-Type: application/json");
-                out.println("Server: java");
-                out.println("");
-                out.println("{\"success\":\"true\"}");
-
-                /*
-                *  Should we do something when the response has been sent?
-                *  Like
-                */
-                out.flush();
-                remote.close();
-
-
-
-
-            } catch (Exception e) {
-                System.out.println("Error: " + e);
-            }
-        }
+    // The Java method will process HTTP GET requests
+    @GET
+    // The Java method will produce content identified by the MIME Media type "text/plain"
+    @Produces("text/plain")
+    public String getClichedMessage() {
+        // Return some cliched textual content
+        return "Hello World!";
     }
 
+    @GET
+    @Path("/user/")
+    @Produces("application/json")
+    public String getAllUsers() {
+
+        //TODO; Hent brugere fra DB
+        return "users";
+    }
+
+    @GET
+    @Path("/user/{userid}")
+    @Produces("application/json")
+    public String getUser(@PathParam("userid") String userid) {
+
+        System.out.println(userid);
+
+        return "userid " + userid;
+
+    }
+
+    @GET
+    @Path("/highscore")
+    @Produces("application/json")
+    public String getScore(String data) {
+
+        System.out.println(data);
+
+        return data;
+
+    }
+
+    @GET
+    @Path("/games")
+    @Produces("application/json")
+    public String getGames(String data) {
+
+        System.out.println(data);
+
+        return data;
+
+    }
+
+    @GET
+    @Path("/result/{gameid}")
+    @Produces("application/json")
+    public String getGame(@PathParam("gameid") String gameid) {
+
+        Game game1 = new Game();
+        game1.setGamename("Diablo");
+        game1.setResult(100);
+
+        System.out.println(gameid);
+
+        return new Gson().toJson(game1);
+
+    }
+
+    @POST
+    @Path("/login/")
+    @Produces("text/plain")
+    public String login(String data)  {
+
+        System.out.println(data);
+        return "OK" ;
+    }
+
+    @POST
+    @Path("/controls/")
+    @Produces("application/json")
+
+    public Response controls (String json) {
+        // public String controls(String data)  {
+
+        Control control1 = new Gson().fromJson(json, Control.class);
+
+        System.out.println(control1.getMovement());
+
+        if (control1.getMovement().equals("d"))
+            return Response.status(201).entity("Success").build();
+        else { return Response.status(500).entity("Fail").build();
+
+        }
+
+
+        // System.out.println(data);
+        //return "OK" ;
+    }
+
+    @POST
+    @Path("/user/")
+    @Produces("text/plain")
+    public String createUser(String data)  {
+
+        System.out.println(data);
+        return "OK" ;
+    }
+    @POST
+    @Path("/create")
+    @Produces("text/plain")
+    public String createGame(String data)  {
+
+        System.out.println(data);
+        return "OK" ;
+    }
+
+    @POST
+    @Path("/start")
+    @Produces("text/plain")
+    public String startGame(String data)  {
+
+        System.out.println(data);
+        return "OK" ;
+    }
+
+    @DELETE
+    @Path("/user/")
+    @Produces("text/plain")
+    public String deleteUser(String data)  {
+
+        System.out.println(data);
+        return data + " has been deleted" ;
+    }
+
+    @DELETE
+    @Path("/game/")
+    @Produces("text/plain")
+    public String deleteGame(String data)  {
+
+        System.out.println(data);
+        return data + " has been deleted" ;
+    }
+
+
+
+    public static void main(String[] args) throws IOException {
+        HttpServer server = HttpServerFactory.create("http://localhost:9998/");
+        server.start();
+
+        System.out.println("Server running");
+        System.out.println("Visit: http://localhost:9998/api");
+        System.out.println("Hit return to stop...");
+        System.in.read();
+        System.out.println("Stopping server");
+        server.stop(0);
+        System.out.println("Server stopped");
+    }
+
+    class Game {
+
+        private String gamename;
+        private int result;
+
+        public void setGamename(String gamename) {
+            this.gamename = gamename;
+        }
+
+        public void setResult(int result) {
+            this.result = result;
+        }
+
+        public String getGamename() {
+            return gamename;
+        }
+
+        public int getResult() {
+            return result;
+        }
+
+    }
+
+    class Control {
+
+        private String movement;
+
+
+        public void setMovement(String movement) {
+            this.movement = movement;
+        }
+
+
+        public String getMovement() {
+            return movement;
+        }
+
+
+
+    }
 
 }

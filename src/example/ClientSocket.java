@@ -1,45 +1,58 @@
 package example;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * Created by Tobias on 15/10/15.
+ * A Simple Socket client that connects to our socket server
+ * @author faheem
+ *
  */
-
 public class ClientSocket {
 
     private String hostname;
     private int port;
     Socket socketClient;
 
-    //Skriv en kommentar (konstruktør)
-    public ClientSocket(String hostname, int port) {
+    public ClientSocket(String hostname, int port){
         this.hostname = hostname;
         this.port = port;
-
     }
 
-    // UnknownHostException gør at hvis den ikke finder nogen host adresse bryder programmet ikke ned
-
-    public void connection() throws UnknownHostException, IOException {
-
-        System.out.println("Try to connect to " + hostname + port);
-
-        System.out.println("Attempting to connect to " + hostname + ":" + port);
-
-        socketClient = new Socket(hostname, port);
-
-        System.out.println("Connection is established");
+    public void connect() throws UnknownHostException, IOException{
+        System.out.println("Attempting to connect to "+hostname+":"+port);
+        socketClient = new Socket(hostname,port);
+        System.out.println("Connection Established");
     }
 
+    public void readResponse() throws IOException{
+        String userInput;
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
 
-    public static void main(String[] args) {
+        System.out.println("Response from server:");
+        while ((userInput = stdIn.readLine()) != null) {
+            System.out.println(userInput);
+        }
+    }
 
-        //This line create a socketclient object
-        WebServer client = new WebServer();
-        client.start();
+    public static void main(String arg[]){
+        //Creating a SocketClient object
+        ClientSocket client = new ClientSocket ("localhost",10001);
+        try {
+            //trying to establish connection to the server
+            client.connect();
+            //if successful, read response from server
+            client.readResponse();
 
-
+        } catch (UnknownHostException e) {
+            System.err.println("Host unknown. Cannot establish connection");
+        } catch (IOException e) {
+            System.err.println("Cannot establish connection. Server may not be up. "+e.getMessage());
+        }
     }
 }
