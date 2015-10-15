@@ -8,10 +8,11 @@ import java.net.Socket;
 
 public class client {
 
-public static void main (String []args){
+    public static void main (String []args){
 
 
-    // test connection
-
-}
+        // test connection
+        // lad os bare bruge det fra øvelsestimen
+        // ny kommentar
+    }
 }
