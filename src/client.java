@@ -17,12 +17,16 @@ public class Client {
             this.port = port;
 
         }
-    // UnknownHostException
+    // UnknownHostException gør at hvis den ikke finder nogen host adresse bryder programmet ikke ned
 
     public void connection() throws UnknownHostException, IOException{
 
+        System.out.println("Try to connect to " + hostname + port);
         SocketClient = new Socket(hostname,port);
+        System.out.println("Connection is established");
     }
+
+
 
 
     public static void main(String[] args) {
