@@ -9,11 +9,11 @@ import java.awt.*;
 public class ContainerPanel extends JPanel {
 
     public static final String LOGINPANEL = "LOGINPANEL";
-    public static final String USERPANEL = "USERNPANEL";
-    public static final String ADMINPANEL = "ADMINPANEL";
+    //public static final String USERPANEL = "USERNPANEL";
+    //public static final String ADMINPANEL = "ADMINPANEL";
 
     private LoginPanel loginPanel;
-    private UserContainerPanel userPanel;
+    //private UserContainerPanel userPanel;
     //  private AdminContainerPanel adminPanel;
 
     private ContainerPanel container;
