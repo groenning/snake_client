@@ -20,7 +20,7 @@ public class Client {
     // UnknownHostException
 
     public void connection() throws UnknownHostException, IOException{
-
+        System.out.println("Attempting to connect to "+hostname+":"+port);
         SocketClient = new Socket(hostname,port);
     }
 
@@ -29,6 +29,8 @@ public class Client {
 
         //This line create a socketclient object
         SocketClient client = new SocketClient ("Localhost",12312);
+
+
     }
 
 }
