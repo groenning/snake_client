@@ -12,6 +12,6 @@ public static void main (String []args){
 
 
     // test connection
-
+    // lad os bare bruge det fra øvelsestimen
 }
 }
