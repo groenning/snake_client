@@ -9,12 +9,8 @@ import java.awt.*;
 public class ContainerPanel extends JPanel {
 
     public static final String LOGINPANEL = "LOGINPANEL";
-    //public static final String USERPANEL = "USERNPANEL";
-    //public static final String ADMINPANEL = "ADMINPANEL";
 
     private LoginPanel loginPanel;
-    //private UserContainerPanel userPanel;
-    //  private AdminContainerPanel adminPanel;
 
     private ContainerPanel container;
     private CardLayout layout;
@@ -25,12 +21,6 @@ public class ContainerPanel extends JPanel {
 
         loginPanel = new LoginPanel();
         add(loginPanel, LOGINPANEL);
-
-        /*userPanel = new UserContainerPanel();
-        add(userPanel, CLIENTPANEL);*/
-
-        //  adminPanel = new AdminContainerPanel();
-        // add(adminPanel, ADMINPANEL);
 
         // foerste panel der koeres
         changePanel(LOGINPANEL);
@@ -45,10 +35,6 @@ public class ContainerPanel extends JPanel {
     public LoginPanel getLoginPanel() {
         return loginPanel;
     }
-
-    /*public UserContainerPanel getUserContainerPanel() {
-        return userPanel;
-    }*/
 
 
 }

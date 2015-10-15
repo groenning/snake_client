@@ -2,8 +2,6 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.Color;
 
 /**
  * Created by Tobias on 15/10/15.
@@ -71,7 +69,7 @@ public class LoginPanel extends JFrame {
         add(TestForgotPass);
     }
 
-    public String getTextFieldUserName()
+ /*   public String getTextFieldUserName()
     {
         return textFieldUsername.getText();
     }
@@ -79,10 +77,11 @@ public class LoginPanel extends JFrame {
     public String getTextFieldPassword()
     {
         String password = new String(textFieldPassword.getPassword());
-        return password;
-    }
 
-    public void setClearUserName()
+        return password;
+    }*/
+
+ /*   public void setClearUserName()
     {
         textFieldUsername.setText("");
     }
@@ -95,12 +94,12 @@ public class LoginPanel extends JFrame {
     public void setError(String errorMessage)
     {
         this.errorMessage.setText(errorMessage);
-    }
+    }*/
 
-    public void addActionListener(ActionListener ac)
+/*    public void addActionListener(ActionListener ac)
     {
         TestLogin.addActionListener(ac);
         TestForgotPass.addActionListener(ac);
-    }
+    }*/
 }
-}
+

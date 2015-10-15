@@ -1,11 +1,11 @@
-package example;
+/*package example;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-/**
+*//**
  * Created by Tobias on 15/10/15.
- */
+ *//*
 
 public class ClientSocket {
 
@@ -42,4 +42,4 @@ public class ClientSocket {
 
 
 
-    }
+    }*/
