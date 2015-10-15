@@ -35,7 +35,7 @@ public static void main (String []args){
         e.printStackTrace();
 
     }
-//Benja prøver
+
 }
  }
 
