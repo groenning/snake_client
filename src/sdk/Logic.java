@@ -23,6 +23,14 @@ public class Logic {
     }
     public static void createUser(User user){
 
+        ServerConnection serverConnection = new ServerConnection();
+
+        user = new User();
+
+        String json = new Gson().toJson(user);
+
+        serverConnection.post(json, "user/");
+
     }
     public static void deleteUser(int userId){
 

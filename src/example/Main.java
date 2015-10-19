@@ -15,6 +15,7 @@ public class Main {
 
         Logic.login("doek4life", "abc123");
         Logic.createGame("battle_to_death",1);
+        Logic.createUser();
 
     }
 }

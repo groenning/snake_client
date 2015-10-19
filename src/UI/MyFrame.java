@@ -1,3 +1,4 @@
+/*
 package UI;
 
 import java.awt.Color;
@@ -5,9 +6,11 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+*/
 /**
  * Created by Tobias on 15/10/15.
- */
+ *//*
+
 public class MyFrame extends JFrame{
 
 
@@ -37,4 +40,4 @@ public class MyFrame extends JFrame{
     {
         return containerPanel;
     }
-}
+}*/

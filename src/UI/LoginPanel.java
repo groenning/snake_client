@@ -1,13 +1,13 @@
-package UI;
+/*package UI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
-/**
+*//**
  * Created by Tobias on 15/10/15.
- */
+ *//*
 public class LoginPanel extends JFrame {
 
     private JLabel errorMessage;
@@ -103,4 +103,4 @@ public class LoginPanel extends JFrame {
         TestForgotPass.addActionListener(ac);
     }
 }
-}
+}*/
