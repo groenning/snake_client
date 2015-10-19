@@ -7,9 +7,9 @@ import com.google.gson.Gson;
  */
 public class Logic {
 
-    public static void login(String username, String password){
+    static ServerConnection serverConnection = new ServerConnection();
 
-        ServerConnection serverConnection = new ServerConnection();
+    public static void login(String username, String password){
 
         User user = new User();
         user.setPassword(password);
@@ -19,24 +19,14 @@ public class Logic {
 
         serverConnection.post(json, "login/");
 
-
     }
-    public static void createUser(String firstName, String lastName, String username, String password, String email){
-
-        ServerConnection serverConnection = new ServerConnection();
-
-        User user = new User();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-        user.setUsername(username);
-        user.setEmail(email);
+    public static void createUser(User user){
 
         String json = new Gson().toJson(user);
 
         serverConnection.post(json, "user/");
-
     }
+
     public static void deleteUser(int userId){
 
     }
@@ -52,14 +42,7 @@ public class Logic {
     public static void startGame(int gameId){
 
     }
-    public static void createGame(String name, int status){
-
-        ServerConnection serverConnection = new ServerConnection();
-
-        Game game = new Game();
-        game.setName(name);
-        //game.setHost();
-        game.setStatus(status);
+    public static void createGame(Game game){
 
         String json = new Gson().toJson(game);
 
