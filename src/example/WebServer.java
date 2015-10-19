@@ -116,10 +116,11 @@ public class WebServer {
     @POST
     @Path("/user/")
     @Produces("text/plain")
-    public String createUser(String data)  {
+    public Response createUser(String data)  {
 
         System.out.println(data);
-        return "OK" ;
+
+        return Response.status(201).entity("{\"succes\":\"true\"}").build();
     }
     @POST
     @Path("/create")

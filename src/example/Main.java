@@ -15,7 +15,8 @@ public class Main {
 
         Logic.login("doek4life", "abc123");
         Logic.createGame("battle_to_death",1);
-        Logic.createUser();
+        //Logic.createUser(0,"Benjamin","Flotte","benja","pass","created","benja@mail.com","tyk");
+        Logic.createUser("Benjamin","Lækker","benja","pass","benja@mail.com");
 
     }
 }

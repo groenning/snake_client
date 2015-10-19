@@ -21,11 +21,16 @@ public class Logic {
 
 
     }
-    public static void createUser(User user){
+    public static void createUser(String firstName, String lastName, String username, String password, String email){
 
         ServerConnection serverConnection = new ServerConnection();
 
-        user = new User();
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPassword(password);
+        user.setUsername(username);
+        user.setEmail(email);
 
         String json = new Gson().toJson(user);
 
