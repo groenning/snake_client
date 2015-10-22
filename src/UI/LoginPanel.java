@@ -24,7 +24,6 @@ public class LoginPanel extends JFrame {
         setBackground(Theme.BACKGROUNDCOLOR);
 
         TestLabel = new JLabel();
-        // TestLabel.setIcon(new ImageIcon(Resource.class.getResource("/CBS Bitcoin Logo Big.png")));
         TestLabel.setBounds(189, 116, 298, 50);
         add(TestLabel);
 
@@ -53,7 +52,6 @@ public class LoginPanel extends JFrame {
         add(TestLogin);
 
         lblNewLabel = new JLabel();
-        //lblNewLabel.setIcon(new ImageIcon(Resource.class.getResource("/CBS small.png")));
         lblNewLabel.setBounds(497, 465, 179, 50);
         add(lblNewLabel);
 
