@@ -36,7 +36,9 @@ public class Logic {
 
     }
     public static void getGame(int gameId){
+        String json = new Gson().toJson(gameId);
 
+        serverConnection.get(json, "gameId/");
     }
     public static void joinGame(int gameId, User opponent, String controls){
 
