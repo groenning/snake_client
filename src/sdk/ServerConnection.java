@@ -4,6 +4,8 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
+import javax.ws.rs.core.Response;
+
 /**
  * Created by BenjaminSelnaes on 15/10/15.
  */
@@ -38,6 +40,15 @@ public class ServerConnection {
         Client client = Client.create();
 
         WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+        ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
+
+        if (response.getStatus() != 200) {
+            throw new RuntimeException("Failed: HTTP error code: "
+                    + response.getStatus());
+        }
+
+        String output = response.getEntity(String.class);
+        System.out.println(output);
 
     }
 
@@ -47,6 +58,7 @@ public class ServerConnection {
 
         WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
         ClientResponse response = webResource.type("application/json").post(ClientResponse.class, json);
+
 
         if (response.getStatus() != 200 && response.getStatus() != 201){
             throw new RuntimeException("Failed : HTTP error code : "
