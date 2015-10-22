@@ -32,6 +32,8 @@ public class Logic {
     }
     public static void getUser(int userId){
 
+
+
     }
     public static void getGame(int gameId){
 
