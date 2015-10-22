@@ -33,7 +33,7 @@ public class ServerConnection {
         return port;
     }
 
-    public void get(String path){
+    public void get(String json, String path){
 
         Client client = Client.create();
 
